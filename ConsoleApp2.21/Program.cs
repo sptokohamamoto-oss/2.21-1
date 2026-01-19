@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public interface IBillable 
 {
@@ -6,8 +7,8 @@ public interface IBillable
 }
 public abstract class Employee : IBillable
 {
-    public int Id;
-    public string Name;
+    public int Id { get;}
+    public string Name { get;}
 
     protected Employee(int id,string name)
     {
@@ -36,7 +37,7 @@ public class FullTimeEmployee : Employee
 }
 public class ContractEmployee : Employee
 { 
-    private const int HouryWage = 1000;
+    private const int HourlyWage = 1000;
 
     public ContractEmployee(int id, string name) : base(id, name) 
     {
@@ -45,7 +46,7 @@ public class ContractEmployee : Employee
 
     public override int CostForDay(int hoursWorked)
     {
-        return hoursWorked * HouryWage;
+        return hoursWorked * HourlyWage;
     }
 }
 class Program
